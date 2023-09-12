@@ -1085,6 +1085,7 @@ class CommandOpenLink extends BaseCommand {
   }
 }
 
+// g;按键处理
 @RegisterAction
 class CommandGoBackInChangelist extends BaseCommand {
   modes = [Mode.Normal];

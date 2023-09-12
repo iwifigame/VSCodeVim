@@ -135,6 +135,7 @@ class EasyMotionTilBackwardCommand extends EasyMotionCharMoveCommandBase {
 
 // EasyMotion word-move commands
 
+// 绑定<leader><leader>w
 @RegisterAction
 class EasyMotionStartOfWordForwardsCommand extends EasyMotionWordMoveCommandBase {
   keys = buildTriggerKeys({ key: 'w' });

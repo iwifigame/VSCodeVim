@@ -93,6 +93,8 @@ export abstract class BaseAction implements IBaseAction {
     return true;
   }
 
+  // @param one: 插件绑定的按键
+  // @param two: 用户按下的按键
   public static CompareKeypressSequence(
     one: readonly string[] | readonly string[][],
     two: readonly string[],
@@ -111,14 +113,37 @@ export abstract class BaseAction implements IBaseAction {
       return false;
     }
 
+    // g; 特殊处理
+    if (one.length === two.length && one.length === 2) {
+      if (one[0] === two[0] && one[0] === 'g' && one[1] === two[1] && one[1] === ';') {
+        return true;
+      }
+    }
+
+    // if (two.length === 3) {
+    //   console.log(two);
+    // }
+
+    // if (one.length === two.length && one.length === 3) {
+    //   if (one[0] === two[0] && one[0] === ';' && one[1] === two[1] && one[1] === ';') {
+    //     console.log(one);
+    //   }
+    // }
+
+    // easymotion 绑定<leader><leader>w
     for (let i = 0, j = 0; i < one.length; i++, j++) {
+      // one = g;按键处理
+      // two = g;
       const left = one[i];
       const right = two[j];
 
       if (left === right && right !== configuration.leader) {
+        // 相等，且不等于<leader>
         continue;
       } else if (left === '<any>') {
         continue;
+        // } else if (left === configuration.leader && right === configuration.leader) {
+        //   continue;
       } else if (left === '<leader>' && right === configuration.leader) {
         continue;
       } else if (left === '<number>' && this.isSingleNumber.test(right)) {
