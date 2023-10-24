@@ -1,6 +1,6 @@
 {
-  "name": "vim",
-  "displayName": "Vim",
+  "name": "vim2",
+  "displayName": "Vim2",
   "description": "Vim emulation for Visual Studio Code",
   "icon": "images/icon.png",
   "version": "1.26.1",
